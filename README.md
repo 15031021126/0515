@@ -1,4 +1,4 @@
-# 0515
+＃0516
 陈浩
-完成MVP搭建与VOLLEY的接口请求数据，xbannder不会， 
-recyclerView不熟悉
+MVP完成登录注册
+xbanner不熟悉，不会，没出来，思路混乱
