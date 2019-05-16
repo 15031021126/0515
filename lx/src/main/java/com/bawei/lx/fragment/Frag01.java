@@ -1,10 +1,16 @@
 package com.bawei.lx.fragment;
 
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.bawei.lx.R;
+import com.bawei.lx.adpter.XbannderAdpter;
 import com.bawei.lx.base.BaseFragment;
+import com.bawei.lx.bean.BannerBean;
 import com.bawei.lx.vp.IOneContract;
 import com.bawei.lx.vp.OnePersenterImpl;
 import com.bumptech.glide.Glide;
@@ -15,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Time:2017/12/9
@@ -25,7 +32,9 @@ public class Frag01 extends BaseFragment implements IOneContract.oneView {
 
     private XBanner xBanner;
     private OnePersenterImpl persenter;
-    private ArrayList<String> strings;
+    private ArrayList<String> ss;
+    private RecyclerView recyclerView;
+
 
     @Override
     protected int bindLayout() {
@@ -36,6 +45,7 @@ public class Frag01 extends BaseFragment implements IOneContract.oneView {
     protected void bindView() {
 
         xBanner = getActivity().findViewById(R.id.xbanner);
+        recyclerView = getActivity().findViewById(R.id.recy);
 
     }
 
@@ -43,7 +53,7 @@ public class Frag01 extends BaseFragment implements IOneContract.oneView {
     protected void iniData() {
         persenter = new OnePersenterImpl();
         persenter.attach(this);
-        persenter.request("http://gank.io/api/data/%E7%A6%8F%E5%88%A9/200/1");
+        persenter.request("http://gank.io/api/data/%E7%A6%8F%E5%88%A9/30/2");
     }
 
     @Override
@@ -52,23 +62,30 @@ public class Frag01 extends BaseFragment implements IOneContract.oneView {
     }
 
 
+    private List<BannerBean> bannerBeanList = new ArrayList<>();
+
     @Override
     public void showData(String result) {
         try {
             JSONObject object = new JSONObject(result);
             JSONArray results = object.getJSONArray("results");
-            strings = new ArrayList<>();
+            ss = new ArrayList<>();
             for (int i = 0; i < results.length(); i++) {
                 JSONObject o = (JSONObject) results.get(i);
                 String url = o.getString("url");
-                strings.add(url);
+                ss.add(url);
+                if (i < 5) {
+                    bannerBeanList.add(new BannerBean(url));
+                }
             }
-            Log.e("123", "showData: "+strings );
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+            recyclerView.setAdapter(new XbannderAdpter(ss,getActivity()));
+            //轮播
+            xBanner.setBannerData(bannerBeanList);
             xBanner.loadImage(new XBanner.XBannerAdapter() {
                 @Override
                 public void loadBanner(XBanner banner, Object model, View view, int position) {
-                    String o = (String) model;
-                    Glide.with(getContext()).load(o).into();
+                    Glide.with(getContext()).load(((BannerBean)model).getXBannerUrl()).into((ImageView)view);
                 }
             });
         } catch (JSONException e) {
