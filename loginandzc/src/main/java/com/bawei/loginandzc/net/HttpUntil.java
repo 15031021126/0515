@@ -55,4 +55,24 @@ public class HttpUntil {
         request.setTag("post");
         MyAppliction.getQueue().add(request);
     }
+
+    public void doGetStr(String url, final CallBackStr backStr) {
+
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                backStr.success(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                backStr.err();
+            }
+        });
+        request.setTag("get");
+        MyAppliction.getQueue().add(request);
+    }
+
+
 }
