@@ -58,8 +58,7 @@ public class HttpUntil {
 
     public void doGetStr(String url, final CallBackStr backStr) {
 
-
-        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        StringRequest request2 = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 backStr.success(response);
@@ -70,8 +69,8 @@ public class HttpUntil {
                 backStr.err();
             }
         });
-        request.setTag("get");
-        MyAppliction.getQueue().add(request);
+        request2.setTag("get");
+        MyAppliction.getQueue().add(request2);
     }
 
 

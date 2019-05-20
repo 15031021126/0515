@@ -8,12 +8,12 @@ import android.widget.TextView;
 
 import com.bawei.lx.R;
 
-/**
- * Time:2017/12/9
- * Author:陈浩是、
- * Description:功能
- */
-public class OneHolder extends RecyclerView.ViewHolder {
+/*
+ *@Auther:陈浩
+ *@Date: 2019/5/17
+ *@Time:22:10
+ *@Description:${DESCRIPTION}
+ * */public class OneHolder extends RecyclerView.ViewHolder {
 
     public ImageView img1;
     public TextView tv1;
@@ -22,6 +22,5 @@ public class OneHolder extends RecyclerView.ViewHolder {
         super(itemView);
         img1 = itemView.findViewById(R.id.img1);
         tv1 = itemView.findViewById(R.id.tv1);
-
     }
 }

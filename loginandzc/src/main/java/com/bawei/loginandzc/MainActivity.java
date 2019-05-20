@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity implements Ionecontract.iOne
         zc = findViewById(R.id.zc);
         phone = findViewById(R.id.phone);
         pwd = findViewById(R.id.pwd);
-
+        Intent intent = new Intent(MainActivity.this, TwoActivity.class);
+        startActivity(intent);
 
         dl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements Ionecontract.iOne
     @Override
     public void getData(String data) {
 
-        Log.e("123", "getData: " + data.toString());
         try {
             JSONObject object = new JSONObject(data);
             String message = object.getString("message");
