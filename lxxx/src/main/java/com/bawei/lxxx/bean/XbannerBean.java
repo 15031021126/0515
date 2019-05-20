@@ -1,4 +1,4 @@
-package com.bawei.a0516.bean;
+package com.bawei.lxxx.bean;
 
 import com.stx.xhb.xbanner.entity.SimpleBannerInfo;
 
@@ -8,25 +8,21 @@ import com.stx.xhb.xbanner.entity.SimpleBannerInfo;
  * Description:功能
  */
 public class XbannerBean extends SimpleBannerInfo {
-
-    public XbannerBean() {
-    }
-
-    public  String imageUrl;
+    private String url;
 
     @Override
     public String toString() {
         return "XbannerBean{" +
-                "imageUrl='" + imageUrl + '\'' +
+                "url='" + url + '\'' +
                 '}';
     }
 
-    public XbannerBean(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public XbannerBean(String url) {
+        this.url = url;
     }
 
     @Override
     public String getXBannerUrl() {
-        return imageUrl;
+        return url;
     }
 }

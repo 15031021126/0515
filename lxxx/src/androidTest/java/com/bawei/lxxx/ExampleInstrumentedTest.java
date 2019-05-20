@@ -1,4 +1,4 @@
-package com.bawei.a0516;
+package com.bawei.lxxx;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.bawei.a0516", appContext.getPackageName());
+        assertEquals("com.bawei.lxxx", appContext.getPackageName());
     }
 }

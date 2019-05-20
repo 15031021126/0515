@@ -1,4 +1,4 @@
-package com.bawei.a0516;
+package com.bawei.lxxx;
 
 import org.junit.Test;
 

@@ -1,19 +1,20 @@
-package com.bawei.lx.vp;
+package com.bawei.lxxx.showmvp;
 
-import com.bawei.lx.vp.CallBackStr;
+
+import com.bawei.lxxx.net.CallBackStr;
 
 /**
  * Time:2017/12/9
  * Author:陈浩
  * Description:功能
  */
-public interface IOneContract {
+public interface IshowMvp {
     interface oneView {
         void showData(String result);
     }
 
     interface oneModel {
-        void doDataStr(String url, CallBackStr backStr);
+        void doGetString(String url, CallBackStr callBackStr);
     }
 
     interface onePersenter {
@@ -21,6 +22,6 @@ public interface IOneContract {
 
         void dettach();
 
-        void request(String url);
+        void requestData(String url);
     }
 }

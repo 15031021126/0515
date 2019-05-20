@@ -1,8 +1,7 @@
-package com.bawei.a0516;
+package com.bawei.lxxx;
 
 import android.app.Application;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
@@ -11,7 +10,8 @@ import com.android.volley.toolbox.Volley;
  * Author:陈浩
  * Description:功能
  */
-public class MyApplication extends Application {
+public class MyAppliction extends Application {
+
     public static RequestQueue queue;
 
     @Override
@@ -21,8 +21,6 @@ public class MyApplication extends Application {
     }
 
     public static RequestQueue getQueue() {
-
         return queue;
     }
-
 }

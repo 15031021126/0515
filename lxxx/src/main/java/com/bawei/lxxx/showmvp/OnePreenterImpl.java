@@ -1,21 +1,22 @@
-package com.bawei.lx.vp;
+package com.bawei.lxxx.showmvp;
 
-import com.bawei.lx.HttpUntil;
+import com.bawei.lxxx.net.CallBackStr;
+import com.bawei.lxxx.net.HttpUntil;
 
 /**
  * Time:2017/12/9
  * Author:陈浩
  * Description:功能
  */
-public class OnePersenterImpl implements IOneContract.onePersenter {
-    private IOneContract.oneView view;
+public class OnePreenterImpl implements IshowMvp.onePersenter {
+    private IshowMvp.oneView view;
     private OneModelImpl model;
     private HttpUntil until;
 
     @Override
-    public void attach(IOneContract.oneView view) {
-        this.view = view;
+    public void attach(IshowMvp.oneView view) {
         model = new OneModelImpl();
+        this.view=view;
     }
 
     @Override
@@ -30,9 +31,9 @@ public class OnePersenterImpl implements IOneContract.onePersenter {
     }
 
     @Override
-    public void request(String url) {
+    public void requestData(String url) {
         until = new HttpUntil();
-        until.doGetData(url, new CallBackStr() {
+        until.doGetStr(url, new CallBackStr() {
             @Override
             public void success(String result) {
                 view.showData(result);
