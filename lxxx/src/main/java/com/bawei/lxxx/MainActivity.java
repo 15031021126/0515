@@ -1,5 +1,6 @@
 package com.bawei.lxxx;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -52,7 +53,18 @@ public class MainActivity extends AppCompatActivity implements IshowMvp.oneView 
             }
 
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(new SomeAdpter(MainActivity.this, list, bens));
+            SomeAdpter adpter = new SomeAdpter(MainActivity.this, list, bens);
+            adpter.getDa(new MyClick() {
+                @Override
+                public void onClick(String url, ArrayList<String> bean, Intent intent) {
+                }
+
+                @Override
+                public void onLongClick(String url, ArrayList<String> bean) {
+
+                }
+            });
+            recyclerView.setAdapter(adpter);
         } catch (JSONException e) {
             e.printStackTrace();
         }

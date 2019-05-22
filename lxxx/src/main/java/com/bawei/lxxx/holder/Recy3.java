@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.bawei.lxxx.R;
+import com.bawei.lxxx.view.MyRecyView;
 
 /*
  *@Auther:陈浩
@@ -13,7 +14,7 @@ import com.bawei.lxxx.R;
  *@Description:${DESCRIPTION}
  * */public class Recy3 extends RecyclerView.ViewHolder {
 
-    public RecyclerView recy3;
+    public MyRecyView recy3;
 
     public Recy3(@NonNull View itemView) {
         super(itemView);

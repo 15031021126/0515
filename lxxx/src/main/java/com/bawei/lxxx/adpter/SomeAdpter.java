@@ -1,6 +1,7 @@
 package com.bawei.lxxx.adpter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,8 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.bawei.lxxx.MyClick;
 import com.bawei.lxxx.R;
+import com.bawei.lxxx.TwoActivity;
 import com.bawei.lxxx.bean.XbannerBean;
 import com.bawei.lxxx.holder.Recy2;
 import com.bawei.lxxx.holder.Recy3;
@@ -32,11 +36,13 @@ import java.util.ArrayList;
     private Context context;
     private ArrayList<XbannerBean> list;
     private ArrayList<String> bens;
+    private MyClick click;
 
     public final int A = 0;
     public final int B = 1;
     public final int C = 2;
     public final int D = 3;
+    private TwoAdpter twoAdpter;
 
     public SomeAdpter(Context context, ArrayList<XbannerBean> list, ArrayList<String> bens) {
         this.context = context;
@@ -78,17 +84,35 @@ import java.util.ArrayList;
                 });
                 break;
             case B:
+
                 ((Recy2) viewHolder).recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-                ((Recy2) viewHolder).recyclerView.setAdapter(new TwoAdpter(context, bens));
+                twoAdpter = new TwoAdpter(context, bens);
+                twoAdpter.getData(new MyClick() {
+                    @Override
+                    public void onClick(String url, ArrayList<String> bean,Intent intent) {
+                        Intent aa = new Intent(context, TwoActivity.class);
+                        aa.putExtra("a",bens);
+                    }
+
+                    @Override
+                    public void onLongClick(String url, ArrayList<String> bean) {
+                        Toast.makeText(context, bean.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                ((Recy2) viewHolder).recyclerView.setAdapter(twoAdpter);
                 break;
             case C:
-                ((Recy3)viewHolder).recy3.setLayoutManager(new GridLayoutManager(context,2));
-                ((Recy3)viewHolder).recy3.setAdapter(new ThreeAdptet(context,bens));
+                ((Recy3) viewHolder).recy3.setLayoutManager(new GridLayoutManager(context, 2));
+                ((Recy3) viewHolder).recy3.setAdapter(new ThreeAdptet(context, bens));
                 break;
             case D:
 
                 break;
         }
+    }
+
+    public void getDa(MyClick click) {
+        this.click = click;
     }
 
     @Override
