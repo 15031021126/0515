@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ccc099"
+    android:orientation="vertical">
+
+    <com.bawei.week3.view.OneView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:Ocolor="#fff"
+        app:bcolor="#000"
+        app:lcolor="#ffff"
+        app:num="10"
+
+        />
+</LinearLayout>

@@ -3,7 +3,7 @@
     <declare-styleable name="MyView">
         <attr name="num" format="integer" />
         <attr name="linecolor" format="color" />
-       <attr name="ocolor" format="color"/>
-        <attr name="back" format="color"/>
+        <attr name="ocolor" format="color" />
+        <attr name="back" format="color" />
     </declare-styleable>
 </resources>
